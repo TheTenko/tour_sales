@@ -97,18 +97,22 @@ namespace tour_sales
 
         private void social_linklabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string url = "https://t.me/akutenkoo";
-            try
+            DialogResult result = MessageBox.Show("Вы переходите на сторонний сервис","",MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
             {
-                Process.Start(new ProcessStartInfo
+                string url = "https://t.me/akutenkoo";
+                try
                 {
-                    FileName = url,
-                    UseShellExecute = true
-                });
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Не удалось открыть ссылку: " + ex.Message);
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = url,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось открыть ссылку: " + ex.Message);
+                }
             }
         }
 
