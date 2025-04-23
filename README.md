@@ -1,3 +1,3 @@
-# tour_sales
+# Турсейлс! - лучшее турагентство 263 группы!
 Готовые exe можно скачать по ссылке:
 https://disk.yandex.ru/d/VZL4Y1v8sIglNg
