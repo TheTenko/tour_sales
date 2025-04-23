@@ -33,7 +33,7 @@
             label3 = new Label();
             label4 = new Label();
             txtRepeatPassword = new MaskedTextBox();
-            txtEmail = new MaskedTextBox();
+            txtPassword = new MaskedTextBox();
             txtLogin = new TextBox();
             button1 = new Button();
             label5 = new Label();
@@ -84,12 +84,12 @@
             txtRepeatPassword.Size = new Size(203, 19);
             txtRepeatPassword.TabIndex = 4;
             // 
-            // txtEmail
+            // txtPassword
             // 
-            txtEmail.Location = new Point(272, 146);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(203, 19);
-            txtEmail.TabIndex = 5;
+            txtPassword.Location = new Point(272, 146);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(203, 19);
+            txtPassword.TabIndex = 5;
             // 
             // txtLogin
             // 
@@ -135,7 +135,7 @@
             Controls.Add(label5);
             Controls.Add(button1);
             Controls.Add(txtLogin);
-            Controls.Add(txtEmail);
+            Controls.Add(txtPassword);
             Controls.Add(txtRepeatPassword);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -157,7 +157,7 @@
         private Label label3;
         private Label label4;
         private MaskedTextBox txtRepeatPassword;
-        private MaskedTextBox txtEmail;
+        private MaskedTextBox txtPassword;
         private TextBox txtLogin;
         private Button button1;
         private Label label5;

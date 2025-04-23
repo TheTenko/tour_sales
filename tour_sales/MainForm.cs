@@ -20,16 +20,38 @@ namespace tour_sales
         // Закрытие формы
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            Application.Exit();
+            base.OnFormClosing(e);
+            try
+            {
+                DialogResult result = MessageBox.Show("Вы точно хотите закрыть приложение?",
+                    "Выход", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true; // Отменяем закрытие
+                }
+                else
+                {
+                    // Закроет все окна, в том числе скрытые
+                    Application.ExitThread();
+                }
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show($"Возникла непридвиденная ошибка: {ex}");
+                e.Cancel = true;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 2)
             {
-                Hotels hotels = new Hotels();
-                hotels.Show();
                 this.Hide();
+                using (var hotels = new Hotels { Owner = this })
+                {
+                    hotels.ShowDialog();
+                }
+                this.Show();
             }
         }
 
@@ -55,15 +77,22 @@ namespace tour_sales
 
         private void profile_button_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile();
-            profile.Show();
             this.Hide();
+            using (var profile = new Profile { Owner = this })
+            {
+                profile.ShowDialog();
+            }
+            this.Show();
         }
 
         private void us_button_Click(object sender, EventArgs e)
         {
-            us us = new us();
-            us.ShowDialog();
+            this.Hide();
+            using (var us = new us { Owner = this })
+            {
+                us.ShowDialog();
+            }
+            this.Show();
         }
 
         private void social_linklabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

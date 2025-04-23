@@ -28,12 +28,22 @@ namespace tour_sales
         {
             string newNickname = txtNickname.Text.Trim();
             string newLogin = txtLogin.Text.Trim();
-            string newPassword = txtRepeatPassword.Text.Trim();
+            string newPassword = txtPassword.Text.Trim();
             string repeatPassword = txtRepeatPassword.Text.Trim();
 
             if (newPassword != repeatPassword)
             {
                 MessageBox.Show("Пароли не совпадают.");
+                return;
+            }
+            if (newPassword == "" && repeatPassword != "")
+            {
+                MessageBox.Show("Вы не ввели новый пароль");
+                return;
+            }    
+            if (newPassword == "")
+            {
+                MessageBox.Show("Вы не ввели пароль");
                 return;
             }
 
@@ -64,6 +74,17 @@ namespace tour_sales
             else
             {
                 MessageBox.Show("Ошибка: пользователь не найден.");
+            }
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы хотите выйти и не сохраниться?",
+                "Выход",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Profile profile = new Profile();
+                profile.Show();
+                this.Hide();
             }
         }
     }

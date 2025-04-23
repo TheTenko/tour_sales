@@ -24,10 +24,13 @@ namespace tour_sales
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
-            this.Hide();
+            base.OnFormClosing(e);
+            if (this.Owner != null)
+            {
+                this.Owner.Show(); // Показываем MainForm обратно
+            }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
