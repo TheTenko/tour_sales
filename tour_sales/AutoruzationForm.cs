@@ -15,31 +15,31 @@ namespace tour_sales
 
         private void enter_button_Click(object sender, EventArgs e)
         {
-            string login = login_textbox.Text; // Получаем логин из поля ввода
-            string password = password_maskedTextBox.Text; // Получаем пароль из поля ввода
+            string login = login_textbox.Text; // РџРѕР»СѓС‡Р°РµРј Р»РѕРіРёРЅ РёР· РїРѕР»СЏ РІРІРѕРґР°
+            string password = password_maskedTextBox.Text; // РџРѕР»СѓС‡Р°РµРј РїР°СЂРѕР»СЊ РёР· РїРѕР»СЏ РІРІРѕРґР°
 
             bool isAuthenticated = UserManager.Authenticate(login, password);
 
             if (isAuthenticated)
             {
-                // Загружаем всех пользователей из JSON
+                // Р—Р°РіСЂСѓР¶Р°РµРј РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР· JSON
                 string json = File.ReadAllText("users.json");
                 var users = JsonSerializer.Deserialize<List<User>>(json);
 
-                // Ищем текущего пользователя
+                // РС‰РµРј С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                 var currentUser = users.FirstOrDefault(u => u.Login == login);
 
-                // Сохраняем в сессию
+                // РЎРѕС…СЂР°РЅСЏРµРј РІ СЃРµСЃСЃРёСЋ
                 Session.CurrentUser = currentUser;
 
-                MessageBox.Show("Вход выполнен успешно!");
+                MessageBox.Show("Р’С…РѕРґ РІС‹РїРѕР»РЅРµРЅ СѓСЃРїРµС€РЅРѕ!");
                 MainForm mainForm = new MainForm();
                 mainForm.Show();
                 Hide();
             }
             else
             {
-                MessageBox.Show("Неверный логин или пароль.");
+                MessageBox.Show("РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ.");
             }
         }
 
